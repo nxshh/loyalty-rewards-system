@@ -9,7 +9,12 @@ import java.util.Optional;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import org.springframework.cache.annotation.Cacheable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @Service
+@Cacheable("customers")
 public class RewardService {
 
     private final CustomerRepository repository;
@@ -65,4 +70,11 @@ public class RewardService {
 
     executor.shutdown();
 }
+public Customer getCustomer(Long id) {
+    return repository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Customer not found"));
 }
+private static final Logger log =
+LoggerFactory.getLogger(RewardService.class);
+}
+
