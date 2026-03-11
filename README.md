@@ -1,68 +1,67 @@
-# Loyalty Rewards System
+# 🚀Loyalty Rewards System
 
-A Spring Boot backend service that simulates a customer loyalty rewards platform with concurrent reward processing.
+A backend service built with Spring Boot that simulates a customer loyalty rewards platform.
+The system provides REST APIs to manage customers, track reward points, and simulate concurrent reward updates using multithreading.
 
 ## Tech Stack
-Java 17  
-Spring Boot  
-Spring Data JPA  
-MySQL  
-Maven  
+- Technology	Purpose
+- Java 17	Core programming language
+- Spring Boot	Backend framework
+- Spring Data JPA	Database interaction
+- MySQL	Data persistence
+- Maven	Dependency management & build tool
+- Swagger	API documentation
 
 ## Features
-- Create customers
-- Add reward points
+- Create and manage customers
+- Add reward points to customer accounts
 - Redeem reward points
-- View all customers
+- Retrieve all registered customers
 - Simulate concurrent reward updates using multithreading
-- REST API with Swagger documentation
+- Interactive Swagger API documentation
 
 ## API Endpoints
+POST - /customers - Create a new customer <br>
+GET - /customers - Retrieve all customers <br>
+POST - /customers/{id}/addPoints - Add reward points <br>
+POST - /customers/{id}/redeem	- Redeem reward points <br>
+POST - /customers/{id}/simulate	- Run concurrent reward simulation
 
-POST /customers  
-Create new customer
+## Project Setup
+### 1. Clone the Repository
+git clone https://github.com/<your-username>/loyalty-rewards-system.git <br>
+cd loyalty-rewards-system
 
-GET /customers  
-List all customers
+### 2. Configure Database
+Create a MySQL database: <br>
+CREATE DATABASE loyalty_db; <br>
+Update application.properties if needed.
 
-POST /customers/{id}/addPoints  
-Add reward points
+### 3. Run the Application
+Using Maven: mvn spring-boot:run <br>
+or <br>
+Using the Maven wrapper: ./mvnw spring-boot:run
 
-POST /customers/{id}/redeem  
-Redeem reward points
+## API Documentation
+Once the application is running, open: <br>
+http://localhost:6060/swagger-ui.html <br>
+Swagger provides an interactive interface to test all APIs directly from the browser.
 
-POST /customers/{id}/simulate  
-Simulate concurrent reward updates
+## Concurrency Simulation
 
-## Run Project
+The endpoint below triggers multiple threads that update reward points simultaneously. <br>
+POST /customers/{id}/simulate <br>
 
-Clone repository
+This demonstrates handling of concurrent reward processing, similar to real-world loyalty systems where multiple transactions occur at the same time.
 
+## Database Schema
 
-git clone <repo-link>
+Database: loyalty_db <br>
+Table: customer <br>
+id: customer ID <br>
+name:	Customer name <br>
+reward_points:	Current reward balance
 
+## 👤 Author
 
-Run application
-
-
-mvn spring-boot:run
-
-
-Swagger UI
-
-
-http://localhost:6060/swagger-ui.html
-
-
-## Database
-
-MySQL database used for persistence.
-
-
-database: loyalty_db
-table: customer
-
-
-## Author
-
-Nisarg Murthy
+Nisarga Murthy
